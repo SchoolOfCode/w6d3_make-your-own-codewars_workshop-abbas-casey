@@ -15,7 +15,7 @@ describe("separateNumbersAndStrings", () => {
         expect(actual).toStrictEqual(expected);
     });
 
-    it("for an input of array containing only numbers, should return an array nested with an empty array and the array of numbers", () => {
+    it("should return an array nested with an empty array and the array of numbers, for an input of array containing only numbers", () => {
         const input = [1, 2, 3, 4, 1131, 12313, 921987];
         const expected = [
             [],
@@ -26,7 +26,7 @@ describe("separateNumbersAndStrings", () => {
         expect(actual).toStrictEqual(expected);
     });
 
-    it("should return 2 strings even if only Strings are given", () => {
+    it("should return an array nested with an empty array and the array of strings, for an input of array containing only strings", () => {
         const input = ["a", "b", "c", "d"];
         const expected = [
             ["a", "b", "c", "d"],
@@ -47,13 +47,96 @@ describe("separateNumbersAndStrings", () => {
 
         expect(actual).toStrictEqual(expected);
     });
+
+    it("should return two empty arrays nested in an array if the input array is empty", () => {
+        const input = [];
+        const expected = [[], []];
+        const actual = separateNumbersAndStrings(input);
+
+        expect(actual).toStrictEqual(expected);
+    });
+
+    it("should work for negative numbers", () => {
+        const input = ["a", "cat", -1, 1, "is", "fat", -2347];
+        const expected = [["a", "cat", "is", "fat"], [-1, 1, -2347]];
+        const actual = separateNumbersAndStrings(input);
+
+        expect(actual).toStrictEqual(expected);
+    });
+
+    it("should work for decimal numbers", () => {
+        const input = ["much", "wow", 89.234, "amaze", .0001];
+        const expected = [["much", "wow", "amaze"], [89.234, .0001]];
+        const actual = separateNumbersAndStrings(input);
+
+        expect(actual).toStrictEqual(expected);
+    });
+
 });
 
 describe("is the things input right???", () => {
-    it("should only contain letters and numbers", () => {
+    it("should throw an error if the input isn't only letters and numbers", () => {
         const input = [".", 1, "-", 2];
         const actual = () => separateNumbersAndStrings(input);
 
-        expect(actual).toThrow("this aint it cheif");
+        expect(actual).toThrow("this aint it chief");
     });
+
+    it("should throw an error if the input isn't only letters and numbers", () => {
+        const input = ["hello", "world", "!", 1000];
+        const actual = () => separateNumbersAndStrings(input);
+
+        expect(actual).toThrow("this aint it chief");
+    });
+
+    it("should throw an error if the input isn't only letters and numbers", () => {
+        const input = [12315, 12312, "...", 12356];
+        const actual = () => separateNumbersAndStrings(input);
+
+        expect(actual).toThrow("this aint it chief");
+    });
+
+    it("should throw an error if there is whitespace in a string", () => {
+        const input = ["hello world", "there is a space here"];
+        const actual = () => separateNumbersAndStrings(input);
+
+        expect(actual).toThrow("this aint it chief");
+    });
+
 });
+
+const testTable = [
+    [
+        ["test1", 123], [["test1"], [123]]
+    ],
+    [
+        ["test", 123], [["test"], [123]]
+    ],
+    [
+        ["test", 123], [["test"], [123]]
+    ],
+    [
+        ["test", 123], [["test"], [123]]
+    ],
+    [
+        ["test", 123], [["test"], [123]]
+    ],
+    [
+        ["test", 123], [["test"], [123]]
+    ],
+    [
+        ["test", 123], [["test"], [123]]
+    ],
+    [
+        ["test", 123], [["test"], [123]]
+    ],
+    [
+        ["test", 123], [["test"], [123]]
+    ],
+    [
+        ["test", 123], [["test"], [123]]
+    ],
+    [
+        ["test", 123], [["test"], [123]]
+    ]
+];

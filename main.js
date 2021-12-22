@@ -9,15 +9,15 @@
     Function should return an array with two nested two arrays: one of only the numbers, and one of only the strings.
     ['a', 1, 'b', 2] => [['a', 'b'], [1,2]]
 
-    If there is any string that isn't a letter or a number then throw this error: "this aint it cheif"
+    If there is any string that isn't completely letters or numbers (including any whitespace!) then throw this error: "this aint it chief"
 */
 
 export function separateNumbersAndStrings(arr) {
     let stringArr = arr.filter((arr) => {
-        let regex = /[a-zA-Z0-9]/g
+        let regex = /\W/g
         if (typeof arr === "string") {
-            if (!arr.match(regex)) {
-                throw new Error("this aint it cheif");
+            if (arr.match(regex)) {
+                throw new Error("this aint it chief");
             }
         }
         return typeof arr === "string"
