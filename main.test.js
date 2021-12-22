@@ -36,6 +36,17 @@ describe("separateNumbersAndStrings", () => {
 
         expect(actual).toStrictEqual(expected);
     });
+
+    it("should separate numbers and strings that look like numbers", () => {
+        const input = [1, "1", 2, "2", 1235, 1312, "1235", "1312"];
+        const expected = [
+            ["1", "2", "1235", "1312"],
+            [1, 2, 1235, 1312]
+        ];
+        const actual = separateNumbersAndStrings(input);
+
+        expect(actual).toStrictEqual(expected);
+    });
 });
 
 describe("is the things input right???", () => {
