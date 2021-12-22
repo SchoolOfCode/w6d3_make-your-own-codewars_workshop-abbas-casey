@@ -19,7 +19,18 @@ describe("separateNumbersAndStrings", () => {
         const input = [1, 2, 3, 4, 1131, 12313, 921987];
         const expected = [
             [],
-            [1, 2, 3, 4, 1131, 12313, 921987],
+            [1, 2, 3, 4, 1131, 12313, 921987]
+        ];
+        const actual = separateNumbersAndStrings(input);
+
+        expect(actual).toStrictEqual(expected);
+    });
+
+    it("should return 2 strings even if only Strings are given", () => {
+        const input = ["a", "b", "c", "d"];
+        const expected = [
+            ["a", "b", "c", "d"],
+            []
         ];
         const actual = separateNumbersAndStrings(input);
 
